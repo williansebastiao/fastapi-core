@@ -1,0 +1,14 @@
+.git
+__pycache__
+k8s
+tests
+*.pyc
+*.pyo
+.editorconfig
+.env
+.env.example
+.gitignore
+docker-compose.yml
+Dockerfile
+makefile
+README.md
