@@ -1,5 +1,3 @@
-include .env
-
 SHELL := /bin/bash
 .DEFAULT_GOAL := help
 DOCKER_COMPOSE := docker-compose
@@ -17,6 +15,9 @@ help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[36m%-26s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 scaffold: ## Start config to project
+	@if [ ! -e .env ]; then \
+		cp .env.example .env; \
+	fi
 	poetry update
 	$(POETRY_CMD) pre-commit install
 
